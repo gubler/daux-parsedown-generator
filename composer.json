@@ -1,0 +1,27 @@
+{
+    "name": "gubler/daux-parsedown-generator",
+    "description": "Daux.io generator to use Parsedown instead of CommonMark",
+    "type": "library",
+    "autoload": {
+        "classmap": [
+            "src/ContentType/ParsedownContentType.php",
+            "src/ContentType/ParsedownConverter.php",
+            "src/Generator/ParsedownGenerator.php",
+            "src/Processor/ParsedownProcessor.php"
+        ]
+    },
+    "require": {
+        "php": "^5.5|^7.0",
+        "erusev/parsedown-extra": "^0.7.1"
+    },
+    "require-dev": {
+        "justinwalsh/daux.io": "^0.3.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daryl Gubler",
+            "email": "daryl@dev88.co"
+        }
+    ]
+}
