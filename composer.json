@@ -5,8 +5,6 @@
     "autoload": {
         "classmap": [
             "src/ContentType/ParsedownContentType.php",
-            "src/ContentType/ParsedownConverter.php",
-            "src/Generator/ParsedownGenerator.php",
             "src/Processor/ParsedownProcessor.php"
         ]
     },
