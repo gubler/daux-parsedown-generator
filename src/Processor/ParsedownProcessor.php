@@ -2,12 +2,21 @@
 
 namespace Todaymade\Daux\Extension;
 
-use Todaymade\Daux\Tree\Root;
+use Todaymade\Daux\Format\HTML\ContentTypes\ParsedownContentType;
 
-class Processor extends \Todaymade\Daux\Processor
+/**
+ * Class ParsedownProcessor
+ *
+ * @package Todaymade\Daux\Extension
+ */
+class ParsedownProcessor extends \Todaymade\Daux\Processor
 {
-    public function addGenerators()
+    /**
+     * Replace the markdown content type with Parsedown
+     * @return array
+     */
+    public function addContentType()
     {
-        return ['parsedown_generator' => '\Todaymade\Daux\Extension\ParsedownGenerator'];
+        return ['markdown' => new ParsedownContentType($this->daux->getParams())];
     }
 }
