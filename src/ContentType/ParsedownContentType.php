@@ -61,7 +61,7 @@ class ParsedownContentType implements ContentType
         return preg_replace_callback(
             '/<blockquote>\\n<h4>(.*?)::(.*?)<\/h4>\\n(.*?)\\n<h4><\/h4>\\n<\/blockquote>/uis',
             function($matches) {
-                $callout = '<div class="callout '.strtolower($matches[1]).'">';
+                $callout = '<div class="callout callout-'.strtolower($matches[1]).'">';
                 $callout .= '<div class="callout-header"><h4>';
                 $callout .= (empty($matches[2]) === false) ? $matches[2] : $matches[1];
                 $callout .= '</h4></div>';
