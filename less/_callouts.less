@@ -1,0 +1,102 @@
+// Callouts
+// -------------------------
+
+// ----------
+// Variables
+// ----------
+@callout-padding:               15px;
+@callout-border-radius:         6px;
+
+@callout-base-bg:               #f3f3f3;
+@callout-base-text:             #333333;
+@callout-base-border:           darken(spin(@callout-success-bg, -10), 5%);
+
+@callout-success-bg:            #dff0d8;
+@callout-success-text:          #3c763d;
+@callout-success-border:        darken(spin(@callout-success-bg, -10), 5%);
+
+@callout-note-bg:               #d9edf7;
+@callout-note-text:             #31708f;
+@callout-note-border:           darken(spin(@callout-note-bg, -10), 7%);
+
+@callout-warning-text:          #8a6d3b;
+@callout-warning-bg:            #fcf8e3;
+@callout-warning-border:        darken(spin(@callout-warning-bg, -10), 5%);
+
+@callout-danger-text:           #a94442;
+@callout-danger-bg:             #f2dede;
+@callout-danger-border:         darken(spin(@callout-danger-bg, -10), 5%);
+
+// ----------
+// Mixin
+// ----------
+.callout-variant(@background; @border; @text-color) {
+  background-color: @background;
+  border-color: @border;
+  color: @text-color;
+
+  .callout-header {
+    background-color: @border;
+
+    h4 {
+      color: @text-color;
+    }
+  }
+
+  hr {
+    border-top-color: darken(@border, 5%);
+  }
+}
+
+// ---------------
+// Base Callout
+// ---------------
+.callout {
+  background-color: @callout-base-bg;
+  color: @callout-base-text;
+  margin-bottom: 14px;
+  border: 2px solid @callout-base-border;
+  border-radius: @callout-border-radius;
+
+  // Headings for larger alerts
+  .callout-header {
+    padding: 4px 12px;
+    background-color: @callout-base-border;
+
+    h4 {
+      font-size: 1.5em;
+      color: @callout-base-bg;
+      margin-top: 0;
+      font-weight: 700;
+    }
+  }
+  .callout-body {
+    padding: 8px;
+
+    > p,
+    > ul {
+      margin-bottom: 0;
+    }
+    > p + p {
+      margin-top: 5px;
+    }
+  }
+
+}
+
+// ---------------------------
+// Callout Variant Generator
+// ---------------------------
+
+.callout-success {
+  .callout-variant(@callout-success-bg; @callout-success-border; @callout-success-text);
+}
+.callout-note {
+  .callout-variant(@callout-note-bg; @callout-note-border; @callout-note-text);
+}
+.callout-warning {
+  .callout-variant(@callout-warning-bg; @callout-warning-border; @callout-warning-text);
+}
+.callout-danger {
+  .callout-variant(@callout-danger-bg; @callout-danger-border; @callout-danger-text);
+}

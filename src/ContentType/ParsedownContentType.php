@@ -47,6 +47,32 @@ class ParsedownContentType implements ContentType
     {
         $this->config->setCurrentPage($node);
 
-        return $this->converter->text($raw);
+        $processed = $this->converter->text($raw);
+
+        return $this->convertCallouts($processed);
+    }
+
+    /**
+     * @param string $text
+     * @return string
+     */
+    protected function convertCallouts($text)
+    {
+        return preg_replace_callback(
+            '/<blockquote>\\n<h4>(.*?)::(.*?)<\/h4>\\n(.*?)\\n<h4><\/h4>\\n<\/blockquote>/uis',
+            function($matches) {
+                $callout = '<div class="callout '.strtolower($matches[1]).'">';
+                $callout .= '<div class="callout-header"><h4>';
+                $callout .= (empty($matches[2]) === false) ? $matches[2] : $matches[1];
+                $callout .= '</h4></div>';
+                $callout .= '<div class="callout-body">';
+                $callout .= $matches[3];
+                $callout .= '</div>';
+                $callout .= '</div>';
+
+                return $callout;
+            },
+            $text
+        );
     }
 }
