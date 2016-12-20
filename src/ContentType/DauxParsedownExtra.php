@@ -76,6 +76,11 @@ class DauxParsedownExtra extends \ParsedownExtra
             return $this->addClass($link, 'external');
         }
 
+        // Absolute urls, shouldn't either
+        if ($this->isMail($url)) {
+            return $this->addClass($link, 'mail');
+        }
+
         // if there's a hash component in the url, ensure we
         // don't put that part through the resolver.
         $urlAndHash = explode('#', $url);
@@ -156,6 +161,16 @@ class DauxParsedownExtra extends \ParsedownExtra
     protected function isExternalUrl($url)
     {
         return preg_match('|^(?:[a-z]+:)?//|', $url);
+    }
+
+    /**
+     * @param string $url
+     *
+     * @return int
+     */
+    protected function isMail($url)
+    {
+        return preg_match('|^mailto:(.*)|', $url);
     }
 
     /**
