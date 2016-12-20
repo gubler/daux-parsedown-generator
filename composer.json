@@ -4,6 +4,7 @@
     "type": "library",
     "autoload": {
         "classmap": [
+            "src/ContentType/DauxParsedownExtra.php",
             "src/ContentType/ParsedownContentType.php",
             "src/Processor/ParsedownProcessor.php"
         ]

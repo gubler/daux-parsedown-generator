@@ -16,7 +16,7 @@ class ParsedownContentType implements ContentType
     /** @var Config */
     protected $config;
 
-    /** @var \ParsedownExtra */
+    /** @var DauxParsedownExtra */
     protected $converter;
 
     /**
@@ -27,7 +27,7 @@ class ParsedownContentType implements ContentType
     public function __construct(Config $config)
     {
         $this->config = $config;
-        $this->converter = new \ParsedownExtra();
+        $this->converter = new DauxParsedownExtra();
     }
 
     /**
